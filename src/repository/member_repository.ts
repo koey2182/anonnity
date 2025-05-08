@@ -1,9 +1,6 @@
 import db from "../database/anonnity_db";
 import ApiError from "../errors/api_error";
 
-// const db = require('../database/anonnity_db');
-// const ApiError = require('../errors/api_error');
-
 export function isExistsLoginId(loginId: string) {
   return db.one('SELECT is_exists_login_id($1) AS is_exists;', [loginId])
   .then(({is_exists}) => is_exists);
@@ -51,10 +48,3 @@ export function insertMember({loginId, encryptedLoginPw, nickname}: Member) {
     }
   })
 }
-
-// module.exports = {
-//   insertMember,
-//   findAll,
-//   isExistsLoginId,
-//   isExistsNickname
-// }
