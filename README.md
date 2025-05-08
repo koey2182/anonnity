@@ -1,4 +1,4 @@
-![아이콘 이미지](./src/public/favicon.png)
+![아이콘 이미지](./assets/images/favicon.png)
 
 # 익명 커뮤니티 서버 개발 프로젝트
 ## 프로젝트 소개
