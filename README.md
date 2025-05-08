@@ -1,5 +1,5 @@
-<div style="background-color: #c8c8c8;">
-  <img src="./assets/images/favicon.png" alt="로고" width="200">
+<div align="center" style="background-color: #c8c8c8;">
+  <img style="display: block;" src="./assets/images/favicon.png" alt="로고" width="200">
 </div>
 
 # 익명 커뮤니티 서버 개발 프로젝트
