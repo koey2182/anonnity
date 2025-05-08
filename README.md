@@ -1,5 +1,4 @@
-![아이콘 이미지](./assets/images/favicon.png)
-<img src="./assets/images/favicon.png" alt="로고" width="300">
+<img src="./assets/images/favicon.png" alt="로고" width="200">
 
 # 익명 커뮤니티 서버 개발 프로젝트
 ## 프로젝트 소개
