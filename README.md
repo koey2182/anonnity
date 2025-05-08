@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div style="background-color: #c8c8c8;">
   <img src="./assets/images/favicon.png" alt="로고" width="200">
 </div>
 
