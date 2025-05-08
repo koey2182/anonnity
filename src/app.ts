@@ -15,7 +15,6 @@ Object.entries(routes).forEach(([path, router]) => {
 
 app.use(express.static('public'));
 
-// const errorHandler = require('./errors/error_handler');
 app.use(errorHandler);
 
 app.listen(port, () => {
