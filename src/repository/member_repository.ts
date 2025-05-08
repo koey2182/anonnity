@@ -1,17 +1,20 @@
-const db = require('../database/anonnity_db');
-const ApiError = require('../errors/api_error');
+import db from "../database/anonnity_db";
+import ApiError from "../errors/api_error";
 
-function isExistsLoginId(loginId) {
+// const db = require('../database/anonnity_db');
+// const ApiError = require('../errors/api_error');
+
+export function isExistsLoginId(loginId: string) {
   return db.one('SELECT is_exists_login_id($1) AS is_exists;', [loginId])
   .then(({is_exists}) => is_exists);
 }
 
-function isExistsNickname(nickname) {
+export function isExistsNickname(nickname: string) {
   return db.one('SELECT is_exists_nickname($1) AS is_exists;', [nickname])
   .then(({is_exists}) => is_exists);
 }
 
-function findAll() {
+export function findAll() {
   return db.any('SELECT * FROM find_all_member();')
   .then(members => members.map(m => {
     return {
@@ -23,7 +26,13 @@ function findAll() {
   }))
 }
 
-function insertMember({loginId, encryptedLoginPw, nickname}) {
+type Member = {
+  loginId: string,
+  encryptedLoginPw: string,
+  nickname: string
+}
+
+export function insertMember({loginId, encryptedLoginPw, nickname}: Member) {
   return isExistsLoginId(loginId)
   .then(isExists => {
     if (isExists) throw new ApiError(409, "CONFLICT_LOGIN_ID", "이미 존재하는 로그인 아이디입니다.");
@@ -43,9 +52,9 @@ function insertMember({loginId, encryptedLoginPw, nickname}) {
   })
 }
 
-module.exports = {
-  insertMember,
-  findAll,
-  isExistsLoginId,
-  isExistsNickname
-}
+// module.exports = {
+//   insertMember,
+//   findAll,
+//   isExistsLoginId,
+//   isExistsNickname
+// }
