@@ -12,7 +12,7 @@ export function isExistsNickname(nickname: string) {
 }
 
 export function findAll() {
-  return db.any('SELECT * FROM find_all_member();')
+  return db.any('SELECT * FROM find_all_members();')
   .then(members => members.map(m => {
     return {
       id: m.id,
