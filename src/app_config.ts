@@ -1,4 +1,3 @@
-// const fs = require('fs');
 import fs from "fs";
 
 const configPath = 'application.json';
@@ -11,8 +10,3 @@ export function getPort() {
 export function getAnonnityDatabaseConnectionInfo() {
   return config.databases.anonnityDb;
 }
-
-// module.exports = {
-//   getPort,
-//   getAnonnityDatabaseConnectionInfo
-// };
