@@ -7,7 +7,7 @@ async function login(req: Request, res: Response, next: NextFunction) {
   const {loginId, loginPw} = req.body;
   // const loginIdDto = LoginId.from(loginId);
   // const loginPwDto = LoginPw.from(loginPw);
-  var accessToken = await authService.login(loginIdDto, loginPwDto)
+  var accessToken = await authService.login(loginId, loginPw)
   res.header('Authorization', accessToken);
   res.status(200).json(null);
 }
