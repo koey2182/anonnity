@@ -1,10 +1,5 @@
-import { findAll } from "../repository/member_repository";
+import memberRepository from "../repository/member_repository";
 
 export function getMembers() {
-  return findAll();
+  return memberRepository.findAll();
 }
-// module.exports = {
-//   getMembers: () => {
-//     return findAll();
-//   },
-// }

@@ -1,10 +1,10 @@
 import express from 'express';
-import { getPort } from "./app_config";
+import config from "./app_config";
 import routes from "./routes";
 import errorHandler from "./errors/error_handler";
 
 const app = express();
-const port = getPort();
+const port = config.port;
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());

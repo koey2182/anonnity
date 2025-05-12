@@ -1,17 +1,17 @@
 import db from "../database/anonnity_db";
 import ApiError from "../errors/api_error";
 
-export function isExistsLoginId(loginId: string) {
+function isExistsLoginId(loginId: string) {
   return db.one('SELECT is_exists_login_id($1) AS is_exists;', [loginId])
   .then(({is_exists}) => is_exists);
 }
 
-export function isExistsNickname(nickname: string) {
+function isExistsNickname(nickname: string) {
   return db.one('SELECT is_exists_nickname($1) AS is_exists;', [nickname])
   .then(({is_exists}) => is_exists);
 }
 
-export function findAll() {
+function findAll() {
   return db.any('SELECT * FROM find_all_members();')
   .then(members => members.map(m => {
     return {
@@ -29,7 +29,7 @@ type Member = {
   nickname: string
 }
 
-export function insertMember({loginId, encryptedLoginPw, nickname}: Member) {
+function insertMember({loginId, encryptedLoginPw, nickname}: Member) {
   return isExistsLoginId(loginId)
   .then(isExists => {
     if (isExists) throw new ApiError(409, "CONFLICT_LOGIN_ID", "이미 존재하는 로그인 아이디입니다.");
@@ -47,4 +47,25 @@ export function insertMember({loginId, encryptedLoginPw, nickname}: Member) {
       nickname
     }
   })
+}
+
+function findMemberByLoginId(loginId: string) {
+  return db.oneOrNone("SELECT * FROM find_member_by_login_id($1);", [loginId])
+  .then(member => {
+    return member ? {
+      id: member.id,
+      loginId: member.login_id,
+      encryptedLoginPw: member.encrypted_login_pw,
+      nickname: member.nickname,
+      createdAt: member.created_at
+    } : null;
+  });
+}
+
+export default {
+  isExistsLoginId,
+  isExistsNickname,
+  findAll,
+  insertMember,
+  findMemberByLoginId
 }

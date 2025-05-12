@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import authService from "../service/auth_service";
 
-export function login(req: Request, res: Response, next: NextFunction) {
+async function login(req: Request, res: Response, next: NextFunction) {
   const {loginId, loginPw} = req.body;
-  authService.login(loginId, loginPw)
-  .then()
-  .catch(next);
+  var accessToken = await authService.login(loginId, loginPw)
+  res.header('Authorization', accessToken);
+  res.status(200).json(null);
+}
+
+export default {
+  login
 }
