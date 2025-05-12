@@ -18,3 +18,6 @@
 ## 데이터베이스
 * PostgreSQL 사용
 * Supabase 무료 플랜으로 DB 배포
+
+## 실행방법
+* `npx ts-node src/app.ts` 명령 실행
